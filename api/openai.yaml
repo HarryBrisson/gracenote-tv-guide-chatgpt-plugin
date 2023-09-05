@@ -1,0 +1,43 @@
+openapi: "3.0.1"
+info:
+  title: "Gracenote TV Guide"
+  version: "1.0.0"
+servers:
+  - url: https://chatgpt.gntv.us
+paths:
+  /find_movies_near_me:
+    get:
+      operationId: find_movies_near_me
+      summary: "Find movies showing near a particular zip code."
+      parameters:
+        - in: query
+          name: zip
+          schema:
+            type: string
+          required: true
+          description: "The zip code to filter the movie data by."
+      responses:
+        "200":
+          description: "Successful operation."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  source:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: "The name of the dataset."
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        # Fields according to your data schema
+        "400":
+          description: "Bad request. Invalid parameters."
+        "500":
+          description: "Internal server error. Unable to fetch data from the external API."
+

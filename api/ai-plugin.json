@@ -1,0 +1,18 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "Gracenote TV Guide",
+    "name_for_model": "gracenote_tv_guide",
+    "description_for_human": "TV, Movie & Sports Schedules from Gracenote.",
+    "description_for_model": "TV, Movie & Sports Schedules from Gracenote.",
+    "auth": {
+        "type": "none"
+    },
+    "api": {
+        "type": "openapi",
+        "url": "https://chatgpt.gntv.us/openai.yaml",
+        "is_user_authenticated": false
+    },
+    "logo_url": "https://chatgpt.gntv.us/logo.png",
+    "contact_email": "ejbrisson@gmail.com",
+    "legal_info_url": "www.gntv.us/legal"
+}
