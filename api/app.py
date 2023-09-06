@@ -54,35 +54,42 @@ def get_tv_show():
 
 @app.route('/find_movies_near_me', methods=['GET'])
 def find_movies_near_me():
-
     now_time = datetime.now()
     datestring = now_time.strftime('%Y-%m-%d')
-
     zipcode = request.args.get('zip')
-
     url = 'http://data.tmsapi.com/v1.1/movies/showings'
-
     api_key = 'haus4e28u73uuy7jdhphvnbe'
 
     params = {
-        'startDate':datestring,
-        'zip':zipcode,
-        'api_key':api_key
+        'startDate': datestring,
+        'zip': zipcode,
+        'api_key': api_key
     }
 
-    response = requests.get(url,params=params)
+    response = requests.get(url, params=params)
 
     if response.status_code != 200:
         return jsonify({"error": "Unable to fetch data from the external API."}), 500
 
-    data = response.json()
+    raw_data = response.json()
+    filtered_data = [
+        {
+            'name': movie['title'],
+            'description': movie.get('longDescription', 'Description not available'),
+            'genre': movie.get('genres', ['Unknown']),
+            'topCast': movie.get('topCast', ['Unknown']),
+            'preferredImageURI': movie.get('preferredImage', {}).get('uri', 'Image not available')
+        } 
+        for movie in raw_data
+    ]
 
     output = {
-        'source':{'name':'Gracenote Data'},
-        'data':data
+        'source': {'name': 'Gracenote Data'},
+        'data': filtered_data
     }
 
     return jsonify(output)
+
 
 
 @app.route('/.well-known/ai-plugin.json')
