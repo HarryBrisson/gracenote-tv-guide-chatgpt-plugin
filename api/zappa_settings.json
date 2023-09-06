@@ -1,0 +1,21 @@
+{
+    "dev": {
+        "app_function": "app.app",
+        "aws_region": "us-east-1",
+        "profile_name": null,
+        "project_name": "gntvguide",
+        "runtime": "python3.9",
+        "s3_bucket": "gntvguide-api-dev"
+    },
+    "prod": {
+        "app_function": "app.app",
+        "aws_region": "us-east-1",
+        "profile_name": null,
+        "project_name": "gntvguide",
+        "runtime": "python3.9",
+        "s3_bucket": "gntvguide-api-prod",
+        "certificate_arn": "arn:aws:acm:us-east-1:190217484878:certificate/5ceae3fb-3f7d-4677-8588-17581ccf0f7d",
+        "domain": "chatgpt.gntv.us",
+        "route53_enabled": false
+    }
+}
