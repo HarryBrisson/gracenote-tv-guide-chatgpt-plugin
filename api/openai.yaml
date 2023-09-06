@@ -29,13 +29,31 @@ paths:
                     properties:
                       name:
                         type: string
-                        description: "The name of the dataset."
-                  data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        # Fields according to your data schema
+                        description: "The name of the data source."
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            description: "Title of the movie."
+                          description:
+                            type: string
+                            description: "Long-form description of the movie."
+                          genre:
+                            type: array
+                            items:
+                              type: string
+                            description: "Genres associated with the movie."
+                          topCast:
+                            type: array
+                            items:
+                              type: string
+                            description: "Top cast members of the movie."
+                          preferredImageURI:
+                            type: string
+                            description: "URI of the preferred image for the movie."
         "400":
           description: "Bad request. Invalid parameters."
         "500":
