@@ -1,0 +1,5 @@
+Flask
+requests
+zappa
+pyyaml
+flask_cors
